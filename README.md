@@ -13,11 +13,18 @@
 + 5) instalar android studio si no es te android sdk, tot i tenir el sdk es recomenat instalar el IDE, assegurar que es te instalat el SDK!
 
 + 6) Configurar ANDROID_HOME (LINUX), leafpad $HOME/.bash_profile i adins ficar lo següent, sino a $HOME/.bashrc:
-⋅⋅⋅export ANDROID_HOME=$HOME/Android/Sdk⋅⋅
-⋅⋅⋅export PATH=$PATH:$ANDROID_HOME/tools⋅⋅
-⋅⋅⋅export PATH=$PATH:$ANDROID_HOME/tools/bin⋅⋅
-⋅⋅⋅export PATH=$PATH:$ANDROID_HOME/platform-tools⋅⋅
-⋅⋅⋅export PATH=$PATH:$ANDROID_HOME/emulator
+
+
+export ANDROID_HOME=$HOME/Android/Sdk
+
+export PATH=$PATH:$ANDROID_HOME/tools
+
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+export PATH=$PATH:$ANDROID_HOME/emulator
+
 
 + 7) Type source $HOME/.bash_profile to load the config into your current shell. Verify that ANDROID_HOME has been added to your path by running echo $PATH.
 
