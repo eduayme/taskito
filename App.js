@@ -9,6 +9,11 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import firebase from 'firebase';
+import {DrawerNavigator} from 'react-navigation'
+
+import Homescreen from './app/components/Homescreen';
+import AddList from './app/components/AddList';
+
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -18,6 +23,9 @@ const instructions = Platform.select({
 });
 
 type Props = {};
+
+
+
 export default class App extends Component<Props> {
 
   componentWillMount() {
@@ -62,14 +70,16 @@ export default class App extends Component<Props> {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!!!!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <AppDrawerNavigator />
     );
   }
 }
+// El primer element que es fica es l'inicial de la APP
+const AppDrawerNavigator = DrawerNavigator ({
+  Homescreen : {screen :Homescreen},
+  AddList : {screen :AddList},
+}) 
+
 
 const styles = StyleSheet.create({
   container: {
