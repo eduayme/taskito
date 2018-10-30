@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View, Image} from 'react-native';
 import firebase from 'firebase';
 
 const instructions = Platform.select({
@@ -40,9 +40,9 @@ export default class App extends Component<Props> {
 
         // espera 1 segon i afegir
         setTimeout(() => {
-            firebase.database().ref('users/007').set(
+            firebase.database().ref('users/008').set(
                 {
-                    name: 'Marco Zanchi',
+                    name: 'PADROSAURIO',
                     age: 21
                 }
             ).then(() => {
@@ -54,16 +54,16 @@ export default class App extends Component<Props> {
 
         // fer un update
         firebase.database().ref('users/007').update({
-            name: 'Marco Zanchi'
+            name: 'Pedro'
         }); 
 
         // fer delete
-        firebase.database().ref('users/007').remove();
+        // firebase.database().ref('users/007').remove();
   }
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native desde LINUX!</Text>
+        <Text style={styles.welcome}>--- @oldrowchicks ---</Text>
         <Text style={styles.instructions}>To get started, edit App.js</Text>
         <Text style={styles.instructions}>{instructions}</Text>
       </View>
@@ -76,10 +76,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#ffc800',
   },
   welcome: {
-    fontSize: 20,
+    fontSize: 35,
     textAlign: 'center',
     margin: 10,
   },
