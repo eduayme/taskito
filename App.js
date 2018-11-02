@@ -13,6 +13,7 @@ import {DrawerNavigator} from 'react-navigation'
 
 import Homescreen from './app/components/Homescreen';
 import AddList from './app/components/AddList';
+import AddTaskToList from './app/components/AddTaskToList';
 
 
 const instructions = Platform.select({
@@ -77,6 +78,7 @@ export default class App extends Component<Props> {
 // El primer element que es fica es l'inicial de la APP
 const AppDrawerNavigator = DrawerNavigator ({
   Homescreen : {screen :Homescreen},
+  AddTaskToList : {screen : AddTaskToList},
   AddList : {screen :AddList},
 }) 
 
