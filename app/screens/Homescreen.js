@@ -8,9 +8,6 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import firebase from 'firebase';
-import {DrawerNavigator} from 'react-navigation'
-
 
 export default class Homescreen extends React.Component {
   render() {
@@ -28,7 +25,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#2a8ab7',
   },
   welcome: {
     fontSize: 20,
