@@ -13,7 +13,10 @@ export default class Homescreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>HOMESCREEN</Text>
+        <Text style={styles.welcome}>PROJECTE TASKITO!</Text>
+        <Text style={styles.text}>És un software per llistar tasques 
+        entre un o diferents usuaris, tant en àmbits professionals com podrien ser projectes; o en un àmbit
+        més quotidià com pot ser la llista de la compra d'una familia. </Text>
       </View>
     );
   }
@@ -28,6 +31,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#2a8ab7',
   },
   welcome: {
+    fontSize: 30,
+    color: '#ffffff',
+    textAlign: 'center',
+    margin: 10,
+  },
+  text: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,

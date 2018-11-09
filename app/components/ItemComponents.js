@@ -20,13 +20,15 @@ export default class ItemComponent extends Component {
   static propTypes = {
       items: PropTypes.array.isRequired
   };
-
+  onItemClickHandler(){
+    print('hello');
+      }
   render() {
     return (
       <View style={styles.itemsList}>
         {this.props.items.map((item, index) => {
             return (
-                <View key={index}>
+                <View key={index} onClick={this.onItemClickHandler.bind(this)}>
                     <Text style={styles.itemtext}>{item.name}</Text>
                 </View>
             )

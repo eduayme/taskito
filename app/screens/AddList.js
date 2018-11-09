@@ -37,9 +37,9 @@ export default class AddItem extends Component {
   render() {
     return (
       <View style={styles.main}>
-        <Text style={styles.title}>Afegeix una llista</Text>
+        <Text style={styles.title}>Afegeix una llista de tasques</Text>
         <TextInput
-              placeholder='Nom'
+              placeholder='Nom de la llista'
               underlineColorAndroid={'transparent'}
               style={styles.itemInput}
               onChange={this.handleChange}
@@ -54,7 +54,7 @@ export default class AddItem extends Component {
                   style={styles.buttonText}>
                   Afegir
               </Text>
-            </TouchableHighlight>
+        </TouchableHighlight>
       </View>
     )
   }
