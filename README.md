@@ -44,5 +44,27 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 Més info a [GETTING STARTED WITH REACT!](https://facebook.github.io/react-native/docs/getting-started.html)
 
 
+Moduls instalars:
+
+
+delete your node_modules directory (rm -rf node_modules/)
+
+npm i -S react-native@0.57.1
+
+npm add @babel/runtime
+
+npm i schedule@0.4.0 --save-dev
+
+npm i
+
+npm install -g firebase-tools
+
+npm install  firebase@4.9.1 --save
+
+npm install react-navigation
+
+Delete la app i tornar a fer el react-native run-android
+
+
 
 
