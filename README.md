@@ -44,10 +44,12 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 Més info a [GETTING STARTED WITH REACT!](https://facebook.github.io/react-native/docs/getting-started.html)
 
 
-Moduls instalars:
+Moduls instalats:
 
 
-delete your node_modules directory (rm -rf node_modules/)
+Borrar la APP del mobil i la carpeta node_modules
+
+Per natejar el gradle amb windows: cd android, gradlew.bat clean, cd .., react-native run-android
 
 npm i -S react-native@0.57.1
 

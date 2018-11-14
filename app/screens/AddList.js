@@ -14,7 +14,7 @@ import {
   TextInput,
   TouchableHighlight,
 } from 'react-native';
-import { addItem } from '../services/ItemService';
+import { addList } from '../services/ItemService';
 
 export default class AddItem extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class AddItem extends Component {
       });
     }
     handleSubmit() {
-      addItem(this.state.name);
+      addList(this.state.name);
       this.textInput.clear();
     }
   render() {
