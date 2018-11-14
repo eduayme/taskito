@@ -44,10 +44,10 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 Més info a [GETTING STARTED WITH REACT!](https://facebook.github.io/react-native/docs/getting-started.html)
 
 
-Moduls instalars:
+Moduls instalats:
 
 
-delete your node_modules directory (rm -rf node_modules/)
+Borrar la APP del mobil i la carpeta node_modules
 
 npm i -S react-native@0.57.1
 
@@ -62,6 +62,8 @@ npm install -g firebase-tools
 npm install  firebase@4.9.1 --save
 
 npm install react-navigation
+
+(Si us peta maxim)Per natejar el gradle amb windows: cd android, gradlew.bat clean, cd .., react-native run-android
 
 Delete la app i tornar a fer el react-native run-android
 
