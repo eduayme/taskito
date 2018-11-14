@@ -49,8 +49,6 @@ Moduls instalats:
 
 Borrar la APP del mobil i la carpeta node_modules
 
-Per natejar el gradle amb windows: cd android, gradlew.bat clean, cd .., react-native run-android
-
 npm i -S react-native@0.57.1
 
 npm add @babel/runtime
@@ -64,6 +62,8 @@ npm install -g firebase-tools
 npm install  firebase@4.9.1 --save
 
 npm install react-navigation
+
+(Si us peta maxim)Per natejar el gradle amb windows: cd android, gradlew.bat clean, cd .., react-native run-android
 
 Delete la app i tornar a fer el react-native run-android
 
