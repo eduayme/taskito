@@ -31,7 +31,7 @@ export default class ListItem extends Component {
             let data = snapshot.val();
             let items = Object.values(data);
             this.setState({items});
-         });
+        });
     }
     
     render() {
@@ -51,7 +51,6 @@ export default class ListItem extends Component {
                             }  
                         </View>
                     </TouchableHighlight>
-                                      
                 </ScrollView>
             </View>
             
@@ -75,4 +74,4 @@ const styles = StyleSheet.create({
         fontSize: 18,
         height: 44,
     }
-  })
+})
