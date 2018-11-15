@@ -11,7 +11,7 @@ import { View, Text, StyleSheet, TouchableHighlight, Alert, ScrollView, FlatList
 import ItemComponent from '../components/ItemComponents';
 
 import { db } from '../config/db';
-import { addTaskToList} from '../services/ItemService';
+import { addTaskToList } from '../services/ItemService';
 
 let itemsRef = db.ref('/Llista');
 
@@ -44,10 +44,6 @@ export default class ListItem extends Component {
             let data = snapshot.val();
             let llistes = Object.values(data);
             this.setState({llistes});
-            /*llistes.map((d)=>{
-                console.log(d.name);
-            })
-            console.log({numbers});*/
         });
     }
 
@@ -56,16 +52,19 @@ export default class ListItem extends Component {
             taskname: e.nativeEvent.text
         });
     }
+
     handleChangeList(e) {
         this.setState({
             listname: e.nativeEvent.text
         });
     }
+
     handleSubmit() {
         addTaskToList(this.state.listname,this.state.taskname);
         this.textInputLlista.clear();
         this.textInputTasca.clear();
     }
+
     render() {
         return (
             <View style={styles.container}>
@@ -77,7 +76,7 @@ export default class ListItem extends Component {
                                 ? 
                                   <ItemComponent llistes={this.state.llistes} />
                                 : 
-                                  <Text>No llistes</Text>
+                                  <Text>No tenim cap llista</Text>
                             }
                     </View>
 
