@@ -6,53 +6,106 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {
-    View,
-    Text,
-    StyleSheet,
-    TextInput,
-    TouchableHighlight,
-} from 'react-native';
-import { deleteList } from '../services/ItemService';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, TouchableHighlight, Alert, ScrollView, FlatList, TextInput, Picker } from 'react-native';
+import ItemComponent from '../components/ItemComponents';
 
-export default class AddItem extends Component {
+import { db } from '../config/db';
+import { updateList } from '../services/ItemService';
+
+let itemsRef = db.ref('/Llista');
+
+const numbers = [1, 2, 3, 4, 5];
+/*data = { 
+this.state.llistes.map((d,idx)=>{
+// console.log(d.name+' '+idx);
+return (<li key={idx}>{d.name}</li>)
+})
+}*/
+
+export default class ListItem extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            name: ''
+            taskname: '',
+            llistes: [],
+            listname: '',
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleChangeList = this.handleChangeList.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    _onPressButton() {
+        Alert.alert('You tapped the button!')
+    }
+
+    componentDidMount() {
+        itemsRef.on('value', (snapshot) => {
+            let data = snapshot.val();
+            let llistes = Object.values(data);
+            this.setState({llistes});
+            /*llistes.map((d)=>{
+                console.log(d.name);
+            })
+            console.log({numbers});*/
+        });
+    }
+
     handleChange(e) {
         this.setState({
-            name: e.nativeEvent.text
+            taskname: e.nativeEvent.text
+        });
+    }
+    handleChangeList(e) {
+        this.setState({
+            listname: e.nativeEvent.text
         });
     }
     handleSubmit() {
-        deleteList(this.state.name);
-        this.textInput.clear();
+        updateList(this.state.listname,this.state.taskname);
+        this.textInputLlista.clear();
+        this.textInputTasca.clear();
     }
     render() {
         return (
-            <View style={styles.main}>
-                <Text style={styles.title}>Eliminar una llista de tasques</Text>
+            
+            <View style={styles.container}>
+                <Text style={styles.header}>Llistes disponibles:</Text>
+                <ScrollView>
+                    <View style={styles.button}>
+                            {   
+                                this.state.llistes.length > 0
+                                ? <ItemComponent llistes={this.state.llistes} />
+                                : <Text>No llistes</Text>
+                            }
+                    </View>
+                </ScrollView>
+
+                <Text style={styles.title}>Editar una llista de tasques </Text>
                 <TextInput
-                    placeholder='Nom de la llista'
+                    placeholder='Nom de la llista (valid adalt)'
+                    underlineColorAndroid={'transparent'}
+                    style={styles.itemInput}
+                    onChange={this.handleChangeList}
+                    ref={input => { this.textInputLlista = input }}
+                    />
+                <TextInput
+                    placeholder='Nou nom de la llista'
                     underlineColorAndroid={'transparent'}
                     style={styles.itemInput}
                     onChange={this.handleChange}
-                    ref={input => { this.textInput = input }}
+                    ref={input => { this.textInputTasca = input }}
                 />
                 <TouchableHighlight
-                    style = {styles.button}
+                    style = {styles.button2}
                     underlayColor= "white"
                     onPress = {this.handleSubmit}
                 >
                     <Text
                         style={styles.buttonText}>
-                        Eliminar
+                        Editar nom
                     </Text>
                 </TouchableHighlight>
             </View>
@@ -61,17 +114,25 @@ export default class AddItem extends Component {
 }
 
 const styles = StyleSheet.create({
-    main: {
+    container: {
         flex: 1,
-        padding: 30,
-        flexDirection: 'column',
         justifyContent: 'center',
-        backgroundColor: '#2a8ab7'
+        backgroundColor: '#2a8ab7',
+    },
+    header: {
+        fontStyle: 'normal',
+        fontSize: 35,
+        color: 'white',
     },
     title: {
-        marginBottom: 20,
+        marginBottom: 35,
         fontSize: 25,
         textAlign: 'center'
+    },
+    item: {
+        padding: 10,
+        fontSize: 18,
+        height: 44,
     },
     itemInput: {
         height: 50,
@@ -88,16 +149,16 @@ const styles = StyleSheet.create({
         color: '#111',
         alignSelf: 'center'
     },
-    button: {
+    button2: {
         height: 45,
         flexDirection: 'row',
         backgroundColor:'white',
         borderColor: 'white',
         borderWidth: 1,
         borderRadius: 8,
-        marginBottom: 10,
+        marginBottom: 160,
         marginTop: 10,
         alignSelf: 'stretch',
         justifyContent: 'center'
     }
-});
+})

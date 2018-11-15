@@ -12,14 +12,6 @@ export const deleteList =  (item) => {
     db.ref("Llista/"+item).remove();
 }
 
-//S'edita el nom de la llista, hem de saber l'id del firebase, aquest cas Llista 1
-/** NOO FUNCIONAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!!*/
-export const editListName =  (item) => {
-    db.ref("Llista/Llista 1/").update({
-        name: item
-    });
-}
-
 //S'afageix una tasca a una llista
 export const addTaskToList =  (nomllista,nomtasca) => {
     console.log(nomllista,' ',nomtasca);
@@ -32,4 +24,23 @@ export const addTaskToList =  (nomllista,nomtasca) => {
 export const deleteTaskToList =  (nomllista,nomtasca) => {
     console.log(nomllista,' ',nomtasca);
     db.ref("Llista/"+nomllista+"/"+nomtasca).remove();
+}
+
+//S'edita el nom de la llista
+export const updateList =  (nomllista,nounom) => {
+    addList(nounom);
+
+    var llistaRef = db.ref("Llista/"+nomllista);
+    llistaRef.on('value', function(snapshot) {
+        var data = snapshot.val();
+        db.ref("Llista/"+nomllista).set(data);
+    });
+
+    deleteList(nomllista);
+}
+
+//S'edita el nom de la tasca
+export const updateList =  (nomllista,nomtasca,nounom) => {
+    addTaskToList(nomllista,nounom);
+    deleteTaskToList(nomllista,nomtasca);
 }
