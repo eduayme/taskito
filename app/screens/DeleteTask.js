@@ -83,7 +83,7 @@ export default class ListItem extends Component {
                     </View>
                 </ScrollView>
 
-                <Text style={styles.title}>Eliminar una tasca:</Text>
+                <Text style={styles.title}>Eliminar una tasca </Text>
                 <TextInput
                     placeholder='Nom de la llista (valid adalt)'
                     underlineColorAndroid={'transparent'}
