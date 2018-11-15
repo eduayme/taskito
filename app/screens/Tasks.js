@@ -70,7 +70,6 @@ export default class ListItem extends Component {
     }
     render() {
         return (
-            
             <View style={styles.container}>
                 <Text style={styles.header}>Tasques disponibles:</Text>
                 <ScrollView>
@@ -82,83 +81,57 @@ export default class ListItem extends Component {
                             }
                     </View>
                 </ScrollView>
-
-                <Text style={styles.title}>Afegir una tasca:</Text>
-                <TextInput
-                    placeholder='Nom de la llista (valid adalt)'
-                    underlineColorAndroid={'transparent'}
-                    style={styles.itemInput}
-                    onChange={this.handleChangeList}
-                    ref={input => { this.textInputLlista = input }}
-                    />
-                <TextInput
-                    placeholder='Nom de la tasca'
-                    underlineColorAndroid={'transparent'}
-                    style={styles.itemInput}
-                    onChange={this.handleChange}
-                    ref={input => { this.textInputTasca = input }}
-                />
-                <TouchableHighlight
-                    style = {styles.button2}
-                    underlayColor= "white"
-                    onPress = {this.handleSubmit}
-                >
-                    <Text
-                        style={styles.buttonText}>
-                        Afegir
-                    </Text>
-                </TouchableHighlight>
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: '#2a8ab7',
-    },
-    header: {
-        fontStyle: 'normal',
-        fontSize: 35,
-        color: 'white',
-    },
-    title: {
-        marginBottom: 35,
-        fontSize: 25,
-        textAlign: 'center'
-    },
-    item: {
-        padding: 10,
-        fontSize: 18,
-        height: 44,
-    },
-    itemInput: {
-        height: 50,
-        padding: 4,
-        marginRight: 5,
-        fontSize: 23,
-        borderWidth: 1,
-        borderColor: 'white',
-        borderRadius: 8,
-        color: 'white'
-    },
-    buttonText: {
-        fontSize: 18,
-        color: '#111',
-        alignSelf: 'center'
-    },
-    button2: {
-        height: 45,
-        flexDirection: 'row',
-        backgroundColor:'white',
-        borderColor: 'white',
-        borderWidth: 1,
-        borderRadius: 8,
-        marginBottom: 160,
-        marginTop: 10,
-        alignSelf: 'stretch',
-        justifyContent: 'center'
-    }
+  container: {
+      flex: 1,
+      justifyContent: 'center',
+      backgroundColor: '#2a8ab7',
+  },
+  header: {
+      fontStyle: 'normal',
+      fontSize: 35,
+      color: 'white',
+  },
+  title: {
+      marginBottom: 35,
+      fontSize: 25,
+      textAlign: 'center'
+  },
+  item: {
+      padding: 10,
+      fontSize: 18,
+      height: 44,
+  },
+  itemInput: {
+      height: 50,
+      padding: 4,
+      marginRight: 5,
+      fontSize: 23,
+      borderWidth: 1,
+      borderColor: 'white',
+      borderRadius: 8,
+      color: 'white'
+  },
+  buttonText: {
+      fontSize: 18,
+      color: '#111',
+      alignSelf: 'center'
+  },
+  button2: {
+      height: 45,
+      flexDirection: 'row',
+      backgroundColor:'white',
+      borderColor: 'white',
+      borderWidth: 1,
+      borderRadius: 8,
+      marginBottom: 160,
+      marginTop: 10,
+      alignSelf: 'stretch',
+      justifyContent: 'center'
+  }
 })

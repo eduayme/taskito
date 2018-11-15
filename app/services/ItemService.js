@@ -24,6 +24,5 @@ export const addTaskToList =  (nomllista,nomtasca) => {
 
 //Per esborrar una llista
 export const deleteItem =  (item) => {
-
     db.ref("Llista/"+item).remove();
 }

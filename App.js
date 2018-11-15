@@ -18,15 +18,17 @@ import { DrawerNavigator } from 'react-navigation';
 import Homescreen from './app/screens/Homescreen';
 import AddList from './app/screens/AddList';
 import AddTaskToList from './app/screens/AddTaskToList';
+import Tasks from './app/screens/Tasks';
 
 import { YellowBox } from 'react-native';
 
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
 const AppDrawerNavigator = DrawerNavigator ({
-  Homescreen : {screen :Homescreen},
+  Homescreen : {screen : Homescreen},
   AddTaskToList : {screen : AddTaskToList},
-  AddList : {screen :AddList},
+  AddList : {screen : AddList},
+  Tasks : {screen :Tasks}
 }) 
 
 export default class App extends Component {
