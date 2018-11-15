@@ -28,9 +28,7 @@ export default class ListItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            taskname: '',
-            llistes: [],
-            listname: '',
+            llistes: []
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleChangeList = this.handleChangeList.bind(this);
@@ -71,15 +69,18 @@ export default class ListItem extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.header}>Tasques disponibles:</Text>
+                <Text style={styles.title}>Tasques:</Text>
                 <ScrollView>
                     <View style={styles.button}>
                             {   
-                                this.state.llistes.length > 0
-                                ? <ItemComponent llistes={this.state.llistes} />
-                                : <Text>No llistes</Text>
+                                this.state.llistes.length > 0 
+                                ? 
+                                  <ItemComponent llistes={this.state.llistes} />
+                                : 
+                                  <Text>No llistes</Text>
                             }
                     </View>
+
                 </ScrollView>
             </View>
         )
@@ -100,7 +101,8 @@ const styles = StyleSheet.create({
   title: {
       marginBottom: 35,
       fontSize: 25,
-      textAlign: 'center'
+      textAlign: 'center',
+      color: 'white',
   },
   item: {
       padding: 10,
