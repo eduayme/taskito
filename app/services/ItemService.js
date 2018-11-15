@@ -32,15 +32,14 @@ export const updateList =  (nomllista,nounom) => {
 
     var llistaRef = db.ref("Llista/"+nomllista);
     llistaRef.on('value', function(snapshot) {
-        var data = snapshot.val();
-        db.ref("Llista/"+nomllista).set(data);
+        db.ref("Llista/"+nomllista).set(snapshot.val());
     });
 
     deleteList(nomllista);
 }
 
 //S'edita el nom de la tasca
-export const updateList =  (nomllista,nomtasca,nounom) => {
-    addTaskToList(nomllista,nounom);
+export const updateTask =  (nomllista,nomtasca,nounom) => {
     deleteTaskToList(nomllista,nomtasca);
+    addTaskToList(nomllista,nounom);
 }

@@ -11,7 +11,7 @@ import { View, Text, StyleSheet, TouchableHighlight, Alert, ScrollView, FlatList
 import ItemComponent from '../components/ItemComponents';
 
 import { db } from '../config/db';
-import { updateList } from '../services/ItemService';
+import { updateTask } from '../services/ItemService';
 
 let itemsRef = db.ref('/Llista');
 
@@ -29,11 +29,13 @@ export default class ListItem extends Component {
         super(props);
         this.state = {
             taskname: '',
+            newtaskname: '',
             llistes: [],
             listname: '',
         }
-        this.handleChange = this.handleChange.bind(this);
         this.handleChangeList = this.handleChangeList.bind(this);
+        this.handleChangeTask = this.handleChangeTask.bind(this);
+        this.handleChangeNewTask = this.handleChangeNewTask.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -53,20 +55,29 @@ export default class ListItem extends Component {
         });
     }
 
-    handleChange(e) {
-        this.setState({
-            taskname: e.nativeEvent.text
-        });
-    }
     handleChangeList(e) {
         this.setState({
             listname: e.nativeEvent.text
         });
     }
+
+    handleChangeTask(e) {
+        this.setState({
+            taskname: e.nativeEvent.text
+        });
+    }
+
+    handleChangeNewTask(e) {
+        this.setState({
+            newtaskname: e.nativeEvent.text
+        });
+    }
+
     handleSubmit() {
-        updateList(this.state.listname,this.state.taskname);
+        updateTask(this.state.listname,this.state.taskname, this.state.newtaskname);
         this.textInputLlista.clear();
         this.textInputTasca.clear();
+        this.textInputNouNom.clear();
     }
     render() {
         return (
@@ -77,13 +88,15 @@ export default class ListItem extends Component {
                     <View style={styles.button}>
                             {   
                                 this.state.llistes.length > 0
-                                ? <ItemComponent llistes={this.state.llistes} />
-                                : <Text>No llistes</Text>
+                                ? 
+                                    <ItemComponent llistes={this.state.llistes} />
+                                : 
+                                    <Text>No llistes</Text>
                             }
                     </View>
                 </ScrollView>
 
-                <Text style={styles.title}>Editar una llista de tasques </Text>
+                <Text style={styles.title}>Editar una tasca </Text>
                 <TextInput
                     placeholder='Nom de la llista (valid adalt)'
                     underlineColorAndroid={'transparent'}
@@ -92,11 +105,18 @@ export default class ListItem extends Component {
                     ref={input => { this.textInputLlista = input }}
                     />
                 <TextInput
-                    placeholder='Nou nom de la llista'
+                    placeholder='Nom de la tasca (valid adalt)'
                     underlineColorAndroid={'transparent'}
                     style={styles.itemInput}
-                    onChange={this.handleChange}
+                    onChange={this.handleChangeTask}
                     ref={input => { this.textInputTasca = input }}
+                    />
+                <TextInput
+                    placeholder='Nou nom de la tasca'
+                    underlineColorAndroid={'transparent'}
+                    style={styles.itemInput}
+                    onChange={this.handleChangeNewTask}
+                    ref={input => { this.textInputNouNom = input }}
                 />
                 <TouchableHighlight
                     style = {styles.button2}
