@@ -7,6 +7,11 @@ export const addList =  (item) => {
     });
 }
 
+//Per esborrar una llista
+export const deleteList =  (item) => {
+    db.ref("Llista/"+item).remove();
+}
+
 //S'edita el nom de la llista, hem de saber l'id del firebase, aquest cas Llista 1
 /** NOO FUNCIONAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!!*/
 export const editListName =  (item) => {
@@ -15,6 +20,7 @@ export const editListName =  (item) => {
     });
 }
 
+//S'afageix una tasca a una llista
 export const addTaskToList =  (nomllista,nomtasca) => {
     console.log(nomllista,' ',nomtasca);
     db.ref("Llista/"+nomllista+"/"+nomtasca).set({
@@ -22,7 +28,8 @@ export const addTaskToList =  (nomllista,nomtasca) => {
     });
 }
 
-//Per esborrar una llista
-export const deleteItem =  (item) => {
-    db.ref("Llista/"+item).remove();
+//S'elimina una tasca d'una llista
+export const deleteTaskToList =  (nomllista,nomtasca) => {
+    console.log(nomllista,' ',nomtasca);
+    db.ref("Llista/"+nomllista+"/"+nomtasca).remove();
 }

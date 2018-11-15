@@ -74,9 +74,9 @@ export default class ListItem extends Component {
                             {   
                                 this.state.llistes.length > 0 
                                 ? 
-                                  <ItemComponent llistes={this.state.llistes} />
+                                    <ItemComponent llistes={this.state.llistes} />
                                 : 
-                                  <Text>No tenim cap llista</Text>
+                                    <Text>No tenim cap llista</Text>
                             }
                     </View>
 

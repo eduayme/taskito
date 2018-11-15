@@ -11,7 +11,7 @@ import { View, Text, StyleSheet, TouchableHighlight, Alert, ScrollView, FlatList
 import ItemComponent from '../components/ItemComponents';
 
 import { db } from '../config/db';
-import { addTaskToList } from '../services/ItemService';
+import { deleteTaskToList } from '../services/ItemService';
 
 let itemsRef = db.ref('/Llista');
 
@@ -64,7 +64,7 @@ export default class ListItem extends Component {
         });
     }
     handleSubmit() {
-        addTaskToList(this.state.listname,this.state.taskname);
+        deleteTaskToList(this.state.listname,this.state.taskname);
         this.textInputLlista.clear();
         this.textInputTasca.clear();
     }
@@ -83,7 +83,7 @@ export default class ListItem extends Component {
                     </View>
                 </ScrollView>
 
-                <Text style={styles.title}>Afegir una tasca:</Text>
+                <Text style={styles.title}>Eliminar una tasca:</Text>
                 <TextInput
                     placeholder='Nom de la llista (valid adalt)'
                     underlineColorAndroid={'transparent'}
@@ -105,7 +105,7 @@ export default class ListItem extends Component {
                 >
                     <Text
                         style={styles.buttonText}>
-                        Afegir
+                        Eliminar
                     </Text>
                 </TouchableHighlight>
             </View>
