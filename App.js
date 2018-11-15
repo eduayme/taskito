@@ -7,17 +7,11 @@
  */
 
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
 import { DrawerNavigator } from 'react-navigation';
 
 import Homescreen from './app/screens/Homescreen';
-import AddList from './app/screens/AddList';
 import AddTaskToList from './app/screens/AddTaskToList';
+import Lists from './app/screens/Lists';
 import EditList from './app/screens/EditList';
 import EditTask from './app/screens/EditTask';
 import DeleteList from './app/screens/DeleteList';
@@ -30,7 +24,7 @@ YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTIm
 
 const AppDrawerNavigator = DrawerNavigator ({
   Homescreen : {screen : Homescreen},
-  AddList : {screen : AddList},
+  Lists : {screen : Lists},
   AddTaskToList : {screen : AddTaskToList},
   EditList : {screen : EditList},
   EditTask : {screen : EditTask},

@@ -7,21 +7,12 @@
  */
 
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableHighlight, Alert, ScrollView, FlatList, TextInput, Picker } from 'react-native';
-import ItemComponent from '../components/ItemComponents';
+import { View, Text, StyleSheet, TouchableHighlight, TextInput } from 'react-native';
 
 import { db } from '../config/db';
 import { addTaskToList } from '../services/ItemService';
 
 let itemsRef = db.ref('/Llista');
-
-const numbers = [1, 2, 3, 4, 5];
-/*data = { 
-this.state.llistes.map((d,idx)=>{
-// console.log(d.name+' '+idx);
-return (<li key={idx}>{d.name}</li>)
-})
-}*/
 
 export default class ListItem extends Component {
 
@@ -33,12 +24,7 @@ export default class ListItem extends Component {
             listname: '',
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleChangeList = this.handleChangeList.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    _onPressButton() {
-        Alert.alert('You tapped the button!')
     }
 
     componentDidMount() {
@@ -46,10 +32,6 @@ export default class ListItem extends Component {
             let data = snapshot.val();
             let llistes = Object.values(data);
             this.setState({llistes});
-            /*llistes.map((d)=>{
-                console.log(d.name);
-            })
-            console.log({numbers});*/
         });
     }
 
@@ -58,39 +40,16 @@ export default class ListItem extends Component {
             taskname: e.nativeEvent.text
         });
     }
-    handleChangeList(e) {
-        this.setState({
-            listname: e.nativeEvent.text
-        });
-    }
     handleSubmit() {
-        addTaskToList(this.state.listname,this.state.taskname);
-        this.textInputLlista.clear();
+        addTaskToList(this.props.navigation.state.params.itemname,this.state.taskname);
         this.textInputTasca.clear();
     }
+
     render() {
         return (
             
-            <View style={styles.container}>
-                <Text style={styles.header}>Llistes disponibles:</Text>
-                <ScrollView>
-                    <View style={styles.button}>
-                            {   
-                                this.state.llistes.length > 0
-                                ? <ItemComponent llistes={this.state.llistes} />
-                                : <Text>No llistes</Text>
-                            }
-                    </View>
-                </ScrollView>
-
-                <Text style={styles.title}>Afegir una tasca:</Text>
-                <TextInput
-                    placeholder='Nom de la llista (valid adalt)'
-                    underlineColorAndroid={'transparent'}
-                    style={styles.itemInput}
-                    onChange={this.handleChangeList}
-                    ref={input => { this.textInputLlista = input }}
-                    />
+            <View style={styles.main}>
+                <Text style={styles.title}>Afegir una tasca a: {this.props.navigation.state.params.itemname}</Text>
                 <TextInput
                     placeholder='Nom de la tasca'
                     underlineColorAndroid={'transparent'}
@@ -99,7 +58,7 @@ export default class ListItem extends Component {
                     ref={input => { this.textInputTasca = input }}
                 />
                 <TouchableHighlight
-                    style = {styles.button2}
+                    style = {styles.button}
                     underlayColor= "white"
                     onPress = {this.handleSubmit}
                 >
@@ -114,15 +73,24 @@ export default class ListItem extends Component {
 }
 
 const styles = StyleSheet.create({
+    main: {
+        flex: 1,
+        padding: 30,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        backgroundColor: '#2a8ab7'
+      },
     container: {
         flex: 1,
         justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: '#2a8ab7',
     },
     header: {
         fontStyle: 'normal',
         fontSize: 35,
         color: 'white',
+        textAlign: 'center'
     },
     title: {
         marginBottom: 35,
@@ -148,17 +116,17 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#111',
         alignSelf: 'center'
-    },
-    button2: {
+      },
+      button: {
         height: 45,
         flexDirection: 'row',
         backgroundColor:'white',
         borderColor: 'white',
         borderWidth: 1,
         borderRadius: 8,
-        marginBottom: 160,
+        marginBottom: 10,
         marginTop: 10,
         alignSelf: 'stretch',
         justifyContent: 'center'
-    }
+      }
 })
