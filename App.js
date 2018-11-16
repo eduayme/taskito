@@ -14,9 +14,6 @@ import AddTaskToList from './app/screens/AddTaskToList';
 import Lists from './app/screens/Lists';
 import EditList from './app/screens/EditList';
 import EditTask from './app/screens/EditTask';
-import DeleteList from './app/screens/DeleteList';
-import DeleteTask from './app/screens/DeleteTask';
-import Tasks from './app/screens/Tasks';
 
 import { YellowBox } from 'react-native';
 
@@ -27,10 +24,7 @@ const AppDrawerNavigator = DrawerNavigator ({
   Lists : {screen : Lists},
   AddTaskToList : {screen : AddTaskToList},
   EditList : {screen : EditList},
-  EditTask : {screen : EditTask},
-  DeleteList : {screen : DeleteList},
-  DeleteTask : {screen : DeleteTask},
-  Tasks : {screen : Tasks}
+  EditTask : {screen : EditTask}
 }) 
 
 export default class App extends Component {

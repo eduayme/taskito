@@ -52,9 +52,6 @@ export default class AddItem extends Component {
       this.textInput.clear();
     }
 
-    _onPressButton(name) {
-        Alert.alert('Obrir pantalla '+name)
-    }
     createButton (item, index) {
         // add a unique key, per react warnings
         return (
